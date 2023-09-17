@@ -14,6 +14,8 @@
 		1F399F722AAD818300767432 /* GameListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F399F712AAD818300767432 /* GameListTests.swift */; };
 		1F399F7C2AAD818300767432 /* GameListUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F399F7B2AAD818300767432 /* GameListUITests.swift */; };
 		1F399F7E2AAD818300767432 /* GameListUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F399F7D2AAD818300767432 /* GameListUITestsLaunchTests.swift */; };
+		1F399F8C2AAD8DAB00767432 /* AddGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F399F8B2AAD8DAB00767432 /* AddGameView.swift */; };
+		1F4974322AADA61800B216FE /* ToolbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4974312AADA61800B216FE /* ToolbarView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +46,9 @@
 		1F399F772AAD818300767432 /* GameListUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GameListUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F399F7B2AAD818300767432 /* GameListUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameListUITests.swift; sourceTree = "<group>"; };
 		1F399F7D2AAD818300767432 /* GameListUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameListUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		1F399F8B2AAD8DAB00767432 /* AddGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddGameView.swift; sourceTree = "<group>"; };
+		1F4974312AADA61800B216FE /* ToolbarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarView.swift; sourceTree = "<group>"; };
+		1FF8906B2AAD996800F7CEAC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,8 +99,9 @@
 		1F399F5F2AAD818200767432 /* GameList */ = {
 			isa = PBXGroup;
 			children = (
+				1FF8906B2AAD996800F7CEAC /* Info.plist */,
+				1F399F8A2AAD8D7A00767432 /* View */,
 				1F399F602AAD818200767432 /* GameListApp.swift */,
-				1F399F622AAD818200767432 /* ContentView.swift */,
 				1F399F642AAD818300767432 /* Assets.xcassets */,
 				1F399F662AAD818300767432 /* Preview Content */,
 			);
@@ -125,6 +131,16 @@
 				1F399F7D2AAD818300767432 /* GameListUITestsLaunchTests.swift */,
 			);
 			path = GameListUITests;
+			sourceTree = "<group>";
+		};
+		1F399F8A2AAD8D7A00767432 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1F399F8B2AAD8DAB00767432 /* AddGameView.swift */,
+				1F399F622AAD818200767432 /* ContentView.swift */,
+				1F4974312AADA61800B216FE /* ToolbarView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -257,7 +273,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F399F8C2AAD8DAB00767432 /* AddGameView.swift in Sources */,
 				1F399F632AAD818200767432 /* ContentView.swift in Sources */,
+				1F4974322AADA61800B216FE /* ToolbarView.swift in Sources */,
 				1F399F612AAD818200767432 /* GameListApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -420,7 +438,7 @@
 				DEVELOPMENT_TEAM = 3646LNYAWY;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_FILE = GameList/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -449,7 +467,7 @@
 				DEVELOPMENT_TEAM = 3646LNYAWY;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_FILE = GameList/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
