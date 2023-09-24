@@ -85,6 +85,7 @@ struct ContentView: View {
                 .navigationBarBackButtonHidden(true)
             }
         } else {
+            // App Launch Screen
             VStack {
                 Image(systemName: "gamecontroller")
                     .resizable()

@@ -48,7 +48,7 @@ struct AddGameView: View {
                         }
                     }
                     
-                    // Estimate Time
+                    // Estimated Time
                     HStack {
                         Text("Estimated Time")
                         TextField("0", text: $estimateTime)
