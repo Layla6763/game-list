@@ -9,7 +9,7 @@ import SwiftUI
 
 @main
 struct GameListApp: App {
-    @StateObject private var dataController = DataController()
+    @StateObject private var dataController = DataController.shared
     var body: some Scene {
         WindowGroup {
             ContentView()

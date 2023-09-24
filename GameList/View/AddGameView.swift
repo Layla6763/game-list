@@ -50,7 +50,7 @@ struct AddGameView: View {
                     
                     // Estimate Time
                     HStack {
-                        Text("Estimate Time")
+                        Text("Estimated Time")
                         TextField("0", text: $estimateTime)
                             .keyboardType(.decimalPad) // Allow decimal input
                             .multilineTextAlignment(.center)
@@ -70,7 +70,7 @@ struct AddGameView: View {
                     //Save Button
                     Section {
                         Button("Save") {
-                            DataController().addGame(name: name, platform: Int16(platform), releaseYear: Int16(releaseYear), estimateTime: Double(estimateTime) ?? 0, notes: notes, status: Int16(status), ratingScore: ratingScore, context: managedObjectContext)
+                            DataController.shared.addGame(name: name, platform: Int16(platform), releaseYear: Int16(releaseYear), estimateTime: Double(estimateTime) ?? 0, notes: notes, status: Int16(status), ratingScore: ratingScore, context: managedObjectContext)
                             isFormSubmitted = true
                         }
                         .buttonStyle(BorderedButtonStyle()) // Add a border to the button
@@ -94,8 +94,6 @@ struct AddGameView: View {
                     }
                 )
             }
-            
-            ToolbarView()
         }
     }
 }

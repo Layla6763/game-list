@@ -10,6 +10,7 @@ import CoreData
 
 class DataController: ObservableObject {
     let container = NSPersistentContainer(name: "GameModel")
+    static let shared = DataController() 
     
     init() {
         container.loadPersistentStores { desc, error in
