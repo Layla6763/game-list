@@ -58,14 +58,13 @@ struct AddGameView: View {
                     }
                     
                     // Notes
-                    VStack{
-                        Text("Notes")
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                        TextEditor(text: $notes)
-                            .frame(minHeight: 200) // Set the minimum height for the text editor
-                            .background(Color(.systemGray5)) // Add a background color
-                            .cornerRadius(8) // Add rounded corners
-                    }
+                    Text("Notes")
+                        .frame(alignment: .leading)
+                    TextEditor(text: $notes)
+                        .frame(minHeight: 150) // Set the minimum height for the text editor
+                        .background(Color(.systemGray5)) // Add a background color
+                        .cornerRadius(8) // Add rounded corners
+                        .listRowSeparator(.hidden)
                     
                     //Save Button
                     Section {

@@ -10,28 +10,29 @@ import CoreData
 
 struct GameListView: View {
     @Environment(\.managedObjectContext) var managedObjContext
-    @FetchRequest(sortDescriptors: [SortDescriptor(\.id, order: .reverse)]) var game: FetchedResults<Game>
+    @FetchRequest(sortDescriptors: [SortDescriptor(\.id, order: .reverse)]) var games: FetchedResults<Game>
     
     private var platforms = ["Nintendo Switch", "PlayStation 4", "PlayStation 5", "Xbox One", "Xbox Series X/S", "Windows", "MacOS"]
+    @State private var offsets = [CGSize](repeating: CGSize.zero, count: 6)
     
     var body: some View {
         ScrollView {
             VStack {
-                ForEach(game) { game in
+                ForEach(self.games.indices, id: \.self) { index in
                     VStack(alignment: .leading, spacing: 6) {
-                        Text(game.name!)
+                        Text(games[index].name!)
                             .bold()
                             .padding(.top, 8)
                             .foregroundColor(.white)
-                        Text("Platform: \(platforms[Int(game.platform)])")
+                        Text("Platform: \(platforms[Int(games[index].platform)])")
                             .font(.subheadline)
                             .padding(.horizontal)
                             .foregroundColor(.white)
-                        Text(verbatim: "Release Year: \(game.releaseYear)")
+                        Text(verbatim: "Release Year: \(games[index].releaseYear)")
                             .font(.subheadline)
                             .padding(.horizontal)
                             .foregroundColor(.white)
-                        Text("Estimate Time: \(String(format: "%.2f", game.estimateTime)) hours")
+                        Text("Estimate Time: \(String(format: "%.2f", games[index].estimateTime)) hours")
                             .font(.subheadline)
                             .padding(.horizontal)
                             .padding(.bottom, 8)
@@ -41,8 +42,31 @@ struct GameListView: View {
                     .background(Color.accentColor.opacity(0.8))
                     .cornerRadius(10)
                     .padding([.vertical, .horizontal], 8)
+                    .offset(x: offsets[index].width)
+                    .gesture(
+                        DragGesture()
+                            .onChanged { gesture in
+                                // Prevent swipe to the right in default position
+                                if offsets[index].width == 0 && gesture.translation.width > 0 {
+                                    return
+                                }
+                                
+                                self.offsets[index] = gesture.translation
+                            }
+                            .onEnded { gesture in
+                                if self.offsets[index].width < -80 {
+                                    managedObjContext.delete(games[index])
+                                    DataController().save(context: managedObjContext)
+                                    self.offsets.remove(at: index)
+                                    return
+                                } else {
+                                    self.offsets[index] = .zero
+                                    return
+                                }
+                            }
+                    )
                 }
-            }
+             }
         }
     }
 }

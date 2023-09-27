@@ -6,7 +6,9 @@ My Game Plan, your companion for managing your gaming adventures. This SwiftUI-p
 Seamlessly add the games you're excited to play to your personal list. My Game Plan's intuitive interface makes it easy to keep track of your gaming backlog. <br />
 <kbd><img src="./AppPhotos/AddGameView.png" alt="Alt Text" width="200"/></kbd>&nbsp;&nbsp;&nbsp;&nbsp;
 <kbd><img src="./AppPhotos/GameListView.png" alt="Alt Text" width="200"/></kbd>
+# Delete a Game
+If you're no longer interested in a particular game, simply swipe left on the game's listing, and it will be removed from your collection. <br />
+![](./AppPhotos/RemoveGame.mov)
 # To Do Features
 * Game list with filter
-* Delete a game
 * User can change a game's status to "Finished" and give the game a rating score when they finish it
