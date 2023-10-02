@@ -19,6 +19,7 @@ struct GameListView: View {
         ScrollView {
             VStack {
                 ForEach(self.games.indices, id: \.self) { index in
+                    NavigationLink("Edit Game", destination: EditGameView(game: games[index]))
                     VStack(alignment: .leading, spacing: 6) {
                         Text(games[index].name!)
                             .bold()
@@ -68,11 +69,5 @@ struct GameListView: View {
                 }
              }
         }
-    }
-}
-
-struct GameListView_Previews: PreviewProvider {
-    static var previews: some View {
-        GameListView()
     }
 }

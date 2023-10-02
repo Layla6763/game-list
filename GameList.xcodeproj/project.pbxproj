@@ -18,6 +18,7 @@
 		1F5D4A6A2ABDBD1B002D5653 /* GameListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5D4A692ABDBD1B002D5653 /* GameListView.swift */; };
 		1F70D63E2AB888D700BDE13A /* GameModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1F70D63C2AB888D700BDE13A /* GameModel.xcdatamodeld */; };
 		1F70D6402AB889C000BDE13A /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F70D63F2AB889C000BDE13A /* DataController.swift */; };
+		1FB30C532ACADD2B0093A315 /* EditGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB30C522ACADD2B0093A315 /* EditGameView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +53,7 @@
 		1F5D4A692ABDBD1B002D5653 /* GameListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameListView.swift; sourceTree = "<group>"; };
 		1F70D63D2AB888D700BDE13A /* GameModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GameModel.xcdatamodel; sourceTree = "<group>"; };
 		1F70D63F2AB889C000BDE13A /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
+		1FB30C522ACADD2B0093A315 /* EditGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditGameView.swift; sourceTree = "<group>"; };
 		1FF8906B2AAD996800F7CEAC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -144,6 +146,7 @@
 				1F1B82232AC02734006A05A7 /* ContentView.swift */,
 				1F399F8B2AAD8DAB00767432 /* AddGameView.swift */,
 				1F5D4A692ABDBD1B002D5653 /* GameListView.swift */,
+				1FB30C522ACADD2B0093A315 /* EditGameView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -289,6 +292,7 @@
 			files = (
 				1F399F8C2AAD8DAB00767432 /* AddGameView.swift in Sources */,
 				1F70D6402AB889C000BDE13A /* DataController.swift in Sources */,
+				1FB30C532ACADD2B0093A315 /* EditGameView.swift in Sources */,
 				1F1B82242AC02734006A05A7 /* ContentView.swift in Sources */,
 				1F5D4A6A2ABDBD1B002D5653 /* GameListView.swift in Sources */,
 				1F399F612AAD818200767432 /* GameListApp.swift in Sources */,

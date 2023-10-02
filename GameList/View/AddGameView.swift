@@ -10,7 +10,6 @@ import SwiftUI
 struct AddGameView: View {
     @Environment (\.managedObjectContext) var managedObjectContext
     // To take us back to the main view
-    @Environment (\.dismiss) var dismiss
     
     @State private var name = ""
     @State private var platform = 0
