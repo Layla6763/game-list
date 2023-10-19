@@ -56,20 +56,6 @@ struct ContentView: View {
                             .cornerRadius(10)
                     }
                     
-                    // Current Games
-                    Spacer()
-                    Button(action: {
-                        //path.append("gameListView")
-                    }) {
-                        Image(systemName: "gamecontroller")
-                            .font(.system(size: 36))
-                        Text("Current Games")
-                            .frame(width: 200, height: 50)
-                            .background(Color.accentColor)
-                            .foregroundColor(.white)
-                            .cornerRadius(10)
-                    }
-                    
                     Spacer()
                 }
                 .navigationDestination(for: String.self) { route in

@@ -19,28 +19,46 @@ struct GameListView: View {
         ScrollView {
             VStack {
                 ForEach(self.games.indices, id: \.self) { index in
-                    NavigationLink("Edit Game", destination: EditGameView(game: games[index]))
                     VStack(alignment: .leading, spacing: 6) {
                         Text(games[index].name!)
                             .bold()
                             .padding(.top, 8)
                             .foregroundColor(.white)
+                        
+                        // Platform
                         Text("Platform: \(platforms[Int(games[index].platform)])")
                             .font(.subheadline)
                             .padding(.horizontal)
                             .foregroundColor(.white)
+                        
+                        // Release Year
                         Text(verbatim: "Release Year: \(games[index].releaseYear)")
                             .font(.subheadline)
                             .padding(.horizontal)
                             .foregroundColor(.white)
+                        // Estimate Time
                         Text("Estimate Time: \(String(format: "%.2f", games[index].estimateTime)) hours")
                             .font(.subheadline)
                             .padding(.horizontal)
-                            .padding(.bottom, 8)
                             .foregroundColor(.white)
+                        
+                        // Edit game and finish game buttons
+                        HStack {
+                            NavigationLink("Edit Game", destination: EditGameView(game: games[index]))
+                                .frame(maxWidth: 110, alignment: .center)
+                                .foregroundColor(.white)
+                                .border(.white)
+                                .padding(.vertical, 12)
+                            // TODO: button for finishing the game and give the game a rating score
+//                            Button("Finished game") {
+//                            }
+//                            .buttonStyle(BorderedButtonStyle()) // Add a border to the button
+//                            .padding(.vertical, 5)
+//                            .tint(.white)
+                        }
                     }
                     .frame(maxWidth: .infinity)
-                    .background(Color.accentColor.opacity(0.8))
+                    .background(Color.accentColor.opacity(0.9))
                     .cornerRadius(10)
                     .padding([.vertical, .horizontal], 8)
                     .offset(x: offsets[index].width)

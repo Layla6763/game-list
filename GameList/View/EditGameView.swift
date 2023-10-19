@@ -20,9 +20,10 @@ struct EditGameView: View {
     @State private var estimateTime = ""
     @State private var notes = ""
     @State private var status = 0
-    @State private var ratingScore: Double = 0
+    @State private var ratingScore = ""
     
     var platforms = ["Nintendo Switch", "PlayStation 4", "PlayStation 5", "Xbox One", "Xbox Series X/S", "Windows", "MacOS"]
+    var statuses = ["To play", "Playing", "Finished"];
     
     var body: some View {
         Form {
@@ -39,7 +40,7 @@ struct EditGameView: View {
                             estimateTime = String(game.estimateTime)
                             notes = game.notes ?? "Notes"
                             status = Int(game.status)
-                            ratingScore = game.ratingScore
+                            ratingScore = String(game.ratingScore)
                         }
                 }
                 
@@ -66,6 +67,21 @@ struct EditGameView: View {
                     Text("hours")
                 }
                 
+                // Status
+                Picker("Status", selection: $status) {
+                    ForEach(0..<statuses.count, id: \.self) {
+                        Text(statuses[$0]).tag($0)
+                    }
+                }
+                
+                // Rating score
+                HStack {
+                    Text("Rating Score")
+                    TextField("0", text: $ratingScore)
+                        .keyboardType(.decimalPad) // Allow decimal input
+                        .multilineTextAlignment(.trailing)
+                }
+                
                 // Notes
                 Text("Notes")
                     .frame(alignment: .leading)
@@ -78,7 +94,7 @@ struct EditGameView: View {
                 //Save Button
                 Section {
                     Button("Submit") {
-                        DataController().editGame(game: game, name: name, platform: Int16(platform), releaseYear: Int16(releaseYear), estimateTime: Double(estimateTime) ?? 0, notes: notes, status: Int16(status), ratingScore: ratingScore, context: managedObjectContext)
+                        DataController().editGame(game: game, name: name, platform: Int16(platform), releaseYear: Int16(releaseYear), estimateTime: Double(estimateTime) ?? 0, notes: notes, status: Int16(status), ratingScore: Double(ratingScore) ?? 0, context: managedObjectContext)
                         dismiss()
                     }
                     .buttonStyle(BorderedButtonStyle()) // Add a border to the button
