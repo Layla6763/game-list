@@ -45,7 +45,7 @@ struct ContentView: View {
                     // Find Game
                     Spacer()
                     Button(action: {
-                        //path.append("gameListView")
+                        path.append("filterGameView")
                     }) {
                         Image(systemName: "magnifyingglass")
                             .font(.system(size: 36))
@@ -64,6 +64,8 @@ struct ContentView: View {
                         AddGameView()
                     case "gameListView":
                         GameListView()
+                    case "filterGameView":
+                        FilterGameView()
                     default:
                         EmptyView()
                     }
