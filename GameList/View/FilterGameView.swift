@@ -9,12 +9,11 @@ import SwiftUI
 
 struct FilterGameView: View {
     @State private var searchName = ""
-    @State private var selectedPlatform = 0 // Default platform
-    @State private var selectedReleaseYear = 2023 // Default release year
-    @State private var selectedStatus = 0 // Default status
+    @State private var selectedPlatform = 7 // Default platform
+    @State private var selectedStatus = 3 // Default status
     
-    var platforms = ["Nintendo Switch", "PlayStation 4", "PlayStation 5", "Xbox One", "Xbox Series X/S", "Windows", "MacOS"]
-    var statuses = ["To play", "Playing", "Finished"];
+    var platforms = ["Nintendo Switch", "PlayStation 4", "PlayStation 5", "Xbox One", "Xbox Series X/S", "Windows", "MacOS", "No platform"]
+    var statuses = ["To play", "Playing", "Finished", "No status"];
     
     var body: some View {
         Form {
@@ -39,13 +38,6 @@ struct FilterGameView: View {
                     }
                 }
                 
-                // Filter by release Year
-                Picker("Release Year", selection: $selectedReleaseYear) {
-                    ForEach(1900...2100, id: \.self) {
-                        Text(String($0))
-                    }
-                }
-                
                 // Filter by Status
                 Picker("Status", selection: $selectedStatus) {
                     ForEach(0..<statuses.count, id: \.self) {
@@ -54,14 +46,13 @@ struct FilterGameView: View {
                 }
                 
                 //Save Button
-                Section {
-                    Button("Search") {
-                        
-                    }
-                    .buttonStyle(BorderedButtonStyle()) // Add a border to the button
-                    .frame(maxWidth: .infinity, alignment: .center) // Center the button
-                    .padding(.vertical, 6)
-                }
+                NavigationLink("Search", destination: GameListView(name: searchName, platform: selectedPlatform, status: selectedStatus))
+                    .frame(maxWidth: 120, alignment: .center)
+                    .border(Color.accentColor)
+                    .background(Color.accentColor)
+                    .cornerRadius(5)
+                    .opacity(0.8)
+                    .padding(.vertical, 10)
             }
         }
     }

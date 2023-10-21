@@ -9,7 +9,6 @@ import SwiftUI
 
 struct EditGameView: View {
     @Environment (\.managedObjectContext) var managedObjectContext
-    // To take us back to the main view
     @Environment (\.dismiss) var dismiss
     
     var game : FetchedResults<Game>.Element

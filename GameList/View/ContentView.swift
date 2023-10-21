@@ -63,7 +63,7 @@ struct ContentView: View {
                     case "addGameView":
                         AddGameView()
                     case "gameListView":
-                        GameListView()
+                        GameListView(name: "", platform: 7, status: 3)
                     case "filterGameView":
                         FilterGameView()
                     default:

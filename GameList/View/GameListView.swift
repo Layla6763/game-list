@@ -9,8 +9,21 @@ import SwiftUI
 import CoreData
 
 struct GameListView: View {
+    @State private var name: String
+    @State private var platform: Int
+    @State private var status: Int
+    
+    public init(name: String, platform: Int, status: Int) {
+        self._name = State(initialValue: name)
+        self._platform = State(initialValue: platform)
+        self._status = State(initialValue: status)
+    }
+    
     @Environment(\.managedObjectContext) var managedObjContext
-    @FetchRequest(sortDescriptors: [SortDescriptor(\.id, order: .reverse)]) var games: FetchedResults<Game>
+    @FetchRequest(
+        entity: Game.entity(),
+        sortDescriptors: [NSSortDescriptor(keyPath: \Game.id, ascending: true)]
+    ) var games: FetchedResults<Game>
     
     private var platforms = ["Nintendo Switch", "PlayStation 4", "PlayStation 5", "Xbox One", "Xbox Series X/S", "Windows", "MacOS"]
     @State private var offsets = [CGSize](repeating: CGSize.zero, count: 6)
@@ -19,7 +32,8 @@ struct GameListView: View {
         ScrollView {
             VStack {
                 ForEach(self.games.indices, id: \.self) { index in
-                    VStack(alignment: .leading, spacing: 6) {
+                    if shouldShowGame(game: games[index]) {
+                        VStack(alignment: .leading, spacing: 6) {
                         Text(games[index].name!)
                             .bold()
                             .padding(.top, 8)
@@ -50,42 +64,59 @@ struct GameListView: View {
                                 .border(.white)
                                 .padding(.vertical, 12)
                             // TODO: button for finishing the game and give the game a rating score
-//                            Button("Finished game") {
-//                            }
-//                            .buttonStyle(BorderedButtonStyle()) // Add a border to the button
-//                            .padding(.vertical, 5)
-//                            .tint(.white)
+                            //                            Button("Finished game") {
+                            //                            }
+                            //                            .buttonStyle(BorderedButtonStyle()) // Add a border to the button
+                            //                            .padding(.vertical, 5)
+                            //                            .tint(.white)
                         }
                     }
-                    .frame(maxWidth: .infinity)
-                    .background(Color.accentColor.opacity(0.9))
-                    .cornerRadius(10)
-                    .padding([.vertical, .horizontal], 8)
-                    .offset(x: offsets[index].width)
-                    .gesture(
-                        DragGesture()
-                            .onChanged { gesture in
-                                // Prevent swipe to the right in default position
-                                if offsets[index].width == 0 && gesture.translation.width > 0 {
-                                    return
+                        .frame(maxWidth: .infinity)
+                        .background(Color.accentColor.opacity(0.9))
+                        .cornerRadius(10)
+                        .padding([.vertical, .horizontal], 8)
+                        .offset(x: offsets[index].width)
+                        .gesture(
+                            DragGesture()
+                                .onChanged { gesture in
+                                    // Prevent swipe to the right in default position
+                                    if offsets[index].width == 0 && gesture.translation.width > 0 {
+                                        return
+                                    }
+                                    
+                                    self.offsets[index] = gesture.translation
                                 }
-                                
-                                self.offsets[index] = gesture.translation
-                            }
-                            .onEnded { gesture in
-                                if self.offsets[index].width < -80 {
-                                    managedObjContext.delete(games[index])
-                                    DataController().save(context: managedObjContext)
-                                    self.offsets.remove(at: index)
-                                    return
-                                } else {
-                                    self.offsets[index] = .zero
-                                    return
+                                .onEnded { gesture in
+                                    if self.offsets[index].width < -80 {
+                                        managedObjContext.delete(games[index])
+                                        DataController().save(context: managedObjContext)
+                                        self.offsets.remove(at: index)
+                                        return
+                                    } else {
+                                        self.offsets[index] = .zero
+                                        return
+                                    }
                                 }
-                            }
-                    )
+                        )
+                    }
                 }
              }
         }
+    }
+    
+    private func shouldShowGame(game: Game) -> Bool {
+        if name != "" && game.name != name {
+            return false
+        }
+        
+        if platform != 7 && game.platform != platform {
+            return false
+        }
+
+        if status != 3 && game.status != status {
+            return false
+        }
+
+        return true
     }
 }
