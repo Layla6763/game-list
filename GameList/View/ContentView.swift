@@ -75,11 +75,10 @@ struct ContentView: View {
         } else {
             // App Launch Screen
             VStack {
-                Image(systemName: "gamecontroller")
+                Image("kapibara")
                     .resizable()
-                    .scaledToFit()
+                    .aspectRatio(contentMode: .fit)
                     .frame(width: 90, height: 90)
-                    .foregroundColor(.accentColor)
                 Text("My Game Plan")
                     .font(.system(size: 30, weight: .heavy))
                     .onAppear {
