@@ -2,7 +2,7 @@
 //  GameListTests.swift
 //  GameListTests
 //
-//  Created by jiayi_work on 10/9/2023.
+//  Created by Jiayi Bian on 10/9/2023.
 //
 
 import XCTest

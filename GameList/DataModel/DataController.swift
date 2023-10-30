@@ -2,7 +2,7 @@
 //  DataController.swift
 //  GameList
 //
-//  Created by jiayi_work on 18/9/2023.
+//  Created by Jiayi Bian on 18/9/2023.
 //
 
 import Foundation

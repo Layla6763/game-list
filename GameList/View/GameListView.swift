@@ -2,7 +2,7 @@
 //  GameListView.swift
 //  GameList
 //
-//  Created by jiayi_work on 22/9/2023.
+//  Created by Jiayi Bian on 22/9/2023.
 //
 
 import SwiftUI
