@@ -57,6 +57,7 @@ struct ContentView: View {
                     }
                     
                     Spacer()
+                    // TODO: add some timeline for the finished games
                 }
                 .navigationDestination(for: String.self) { route in
                     switch route {

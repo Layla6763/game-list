@@ -22,7 +22,7 @@ struct FilterGameView: View {
                 HStack {
                     Image(systemName: "magnifyingglass")
                         .foregroundColor(.gray)
-                    
+                    // TODO: add arbitrary search
                     TextField("Search for a game", text: $searchName)
                         .autocapitalization(.none)
                         .disableAutocorrection(true)
@@ -45,14 +45,15 @@ struct FilterGameView: View {
                     }
                 }
                 
-                //Save Button
-                NavigationLink("Search", destination: GameListView(name: searchName, platform: selectedPlatform, status: selectedStatus))
-                    .frame(maxWidth: 120, alignment: .center)
-                    .border(Color.accentColor)
-                    .background(Color.accentColor)
-                    .cornerRadius(5)
-                    .opacity(0.8)
-                    .padding(.vertical, 10)
+                // Search Button
+                NavigationLink(destination: GameListView(name: searchName, platform: selectedPlatform, status: selectedStatus)) {
+                    Text("Search")
+                            .frame(width: 100, height: 30, alignment: .center)
+                            .background(Color.accentColor)
+                            .foregroundColor(Color.white)
+                            .cornerRadius(10)
+                            .padding(.vertical, 10)
+                }
             }
         }
     }

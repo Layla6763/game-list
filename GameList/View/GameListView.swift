@@ -77,6 +77,7 @@ struct GameListView: View {
                         .padding([.vertical, .horizontal], 8)
                         .offset(x: offsets[index].width)
                         .gesture(
+                            // TODO: improve the delete item effect
                             DragGesture()
                                 .onChanged { gesture in
                                     // Prevent swipe to the right in default position
