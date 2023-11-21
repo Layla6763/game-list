@@ -8,7 +8,7 @@ Seamlessly add the games you're excited to play to your personal list. My Game P
 <kbd><img src="./AppPhotos/GameListView.png" alt="Alt Text" width="200"/></kbd>
 # Delete a Game
 If you're no longer interested in a particular game, simply swipe left on the game's listing, and it will be removed from your collection. <br />
-![](./AppPhotos/RemoveGame.mov)
+<kbd><img src="./AppPhotos/DeleteGame.png" alt="Alt Text" width="200"/></kbd>
 # Edit a Game
 Whether it's correcting details, changing the game's status, or updating important notes, this functionality provides a quick way to maintain an accurate and personalized game list. Users can effortlessly modify game attributes, ensuring their gaming plans remain organized and up-to-date.<br />
 <kbd><img src="./AppPhotos/EditGameView.png" alt="Alt Text" width="200"/></kbd>

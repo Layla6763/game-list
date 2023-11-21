@@ -27,6 +27,8 @@ struct GameListView: View {
     
     private var platforms = ["Nintendo Switch", "PlayStation 4", "PlayStation 5", "Xbox One", "Xbox Series X/S", "Windows", "MacOS"]
     @State private var offsets = [CGSize](repeating: CGSize.zero, count: 1000)
+    @State private var showAlert = false
+    @State private var currentDeleteGameIndex = 0;
     
     var body: some View {
         ScrollView {
@@ -50,6 +52,7 @@ struct GameListView: View {
                             .font(.subheadline)
                             .padding(.horizontal)
                             .foregroundColor(.white)
+                            
                         // Estimate Time
                         Text("Estimate Time: \(String(format: "%.2f", games[index].estimateTime)) hours")
                             .font(.subheadline)
@@ -77,7 +80,6 @@ struct GameListView: View {
                         .padding([.vertical, .horizontal], 8)
                         .offset(x: offsets[index].width)
                         .gesture(
-                            // TODO: improve the delete item effect
                             DragGesture()
                                 .onChanged { gesture in
                                     // Prevent swipe to the right in default position
@@ -89,16 +91,37 @@ struct GameListView: View {
                                 }
                                 .onEnded { gesture in
                                     if self.offsets[index].width < -80 {
-                                        managedObjContext.delete(games[index])
-                                        DataController().save(context: managedObjContext)
-                                        self.offsets.remove(at: index)
-                                        return
+                                        showAlert = true
+                                        currentDeleteGameIndex = index
+                                        return;
                                     } else {
                                         self.offsets[index] = .zero
                                         return
                                     }
                                 }
                         )
+                        .alert(isPresented: $showAlert) {
+                            Alert(
+                                title: Text("Delete Game"),
+                                message: Text("Are you sure you want to delete this game?"),
+                                primaryButton: .default(Text("Yes")) {
+                                    // Delete the game
+                                    let gameIndex = $currentDeleteGameIndex.wrappedValue
+                                    managedObjContext.delete(games[gameIndex])
+                                    DataController().save(context: managedObjContext)
+                                    self.offsets.remove(at: gameIndex)
+                                    return
+                                },
+                                secondaryButton: .cancel(
+                                    Text("Cancel"),
+                                    action: {
+                                        let gameIndex = $currentDeleteGameIndex.wrappedValue
+                                        self.offsets[gameIndex] = .zero
+                                        return
+                                    }
+                                )
+                            )
+                        }
                     }
                 }
              }
