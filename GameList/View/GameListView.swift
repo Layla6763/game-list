@@ -26,7 +26,7 @@ struct GameListView: View {
     ) var games: FetchedResults<Game>
     
     private var platforms = ["Nintendo Switch", "PlayStation 4", "PlayStation 5", "Xbox One", "Xbox Series X/S", "Windows", "MacOS"]
-    @State private var offsets = [CGSize](repeating: CGSize.zero, count: 6)
+    @State private var offsets = [CGSize](repeating: CGSize.zero, count: 1000)
     
     var body: some View {
         ScrollView {
