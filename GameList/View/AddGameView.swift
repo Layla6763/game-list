@@ -31,6 +31,7 @@ struct AddGameView: View {
                         Text("Name")
                         TextField("Game Name", text: $name)
                             .multilineTextAlignment(.trailing)
+                            .disableAutocorrection(true)
                     }
                     
                     // Platform
@@ -50,9 +51,10 @@ struct AddGameView: View {
                     // Estimated Time
                     HStack {
                         Text("Estimated Time")
-                        TextField("0", text: $estimateTime)
+                        TextField("0", value: $estimateTime, formatter: NumberFormatter())
                             .keyboardType(.decimalPad) // Allow decimal input
                             .multilineTextAlignment(.center)
+                            .disableAutocorrection(true)
                         Text("hours")
                     }
                     
@@ -64,6 +66,7 @@ struct AddGameView: View {
                         .background(Color(.systemGray5)) // Add a background color
                         .cornerRadius(8) // Add rounded corners
                         .listRowSeparator(.hidden)
+                        .disableAutocorrection(true)
                     
                     //Save Button
                     Section {

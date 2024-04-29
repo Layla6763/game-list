@@ -63,6 +63,7 @@ struct EditGameView: View {
                     TextField("0", text: $estimateTime)
                         .keyboardType(.decimalPad) // Allow decimal input
                         .multilineTextAlignment(.center)
+                        .disableAutocorrection(true)
                     Text("hours")
                 }
                 
@@ -79,6 +80,7 @@ struct EditGameView: View {
                     TextField("0", text: $ratingScore)
                         .keyboardType(.decimalPad) // Allow decimal input
                         .multilineTextAlignment(.trailing)
+                        .disableAutocorrection(true)
                 }
                 
                 // Notes
@@ -89,6 +91,7 @@ struct EditGameView: View {
                     .background(Color(.systemGray5)) // Add a background color
                     .cornerRadius(8) // Add rounded corners
                     .listRowSeparator(.hidden)
+                    .disableAutocorrection(true)
                 
                 //Save Button
                 Section {
