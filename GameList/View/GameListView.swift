@@ -66,12 +66,6 @@ struct GameListView: View {
                                 .foregroundColor(.white)
                                 .border(.white)
                                 .padding(.vertical, 12)
-                            // TODO: button for finishing the game and give the game a rating score
-                            //                            Button("Finished game") {
-                            //                            }
-                            //                            .buttonStyle(BorderedButtonStyle()) // Add a border to the button
-                            //                            .padding(.vertical, 5)
-                            //                            .tint(.white)
                         }
                     }
                         .frame(maxWidth: .infinity)

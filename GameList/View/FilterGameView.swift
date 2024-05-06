@@ -22,7 +22,6 @@ struct FilterGameView: View {
                 HStack {
                     Image(systemName: "magnifyingglass")
                         .foregroundColor(.gray)
-                    // TODO: add arbitrary search
                     TextField("Search for a game", text: $searchName)
                         .autocapitalization(.none)
                         .disableAutocorrection(true)
